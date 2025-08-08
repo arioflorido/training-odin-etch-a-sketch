@@ -1,8 +1,13 @@
-const container = document.querySelector("div.container");
+const DEFAULT_GRID_COUNT = 16;
 
-function createGrid() {
-  const rowSize = 16;
-  const columnSize = 16;
+function createGrid(gridCount = DEFAULT_GRID_COUNT) {
+  const rowSize = gridCount;
+  const columnSize = gridCount;
+
+  const container = document.querySelector("div.container");
+
+  // remove all child elements from parent div container
+  container.replaceChildren();
 
   for (let currentRow = 0; currentRow < rowSize; currentRow++) {
     const subcontainer = document.createElement("div");
@@ -22,3 +27,29 @@ function createGrid() {
 }
 
 createGrid();
+
+// BUTTON STUFF
+
+const updateGridCountButton = document.querySelector(
+  "button.updateGridCountButton"
+);
+
+updateGridCountButton.addEventListener("click", () => {
+  let gridCount = window.prompt("Please enter the desired grid size (1-100):");
+
+  while (
+    gridCount !== null &&
+    (isNaN(gridCount) || gridCount < 1 || gridCount > 100)
+  ) {
+    gridCount = prompt(
+      "Invalid input. Please enter a number between 1 and 100:"
+    );
+  }
+
+  if (gridCount === null) {
+    console.log("User cancelled input.");
+    return;
+  }
+
+  createGrid((gridCount = gridCount));
+});

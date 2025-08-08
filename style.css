@@ -4,7 +4,16 @@ html {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  /* background-color: antiquewhite; */
+}
+
+div {
+  text-align: center;
+}
+
+button.updateGridCountButton {
+  align-items: center;
+  margin: 10px;
+  font-size: larger;
 }
 
 div.container {
