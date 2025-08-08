@@ -1,0 +1,27 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-color: antiquewhite; */
+}
+
+div.container {
+  border: 2px dashed black;
+  display: flex;
+  flex-direction: row;
+}
+
+div.subcontainer {
+  flex: 1;
+  justify-content: center;
+}
+
+div.square {
+  border: 1px solid black;
+}
+
+div.square:hover {
+  background-color: bisque;
+}
