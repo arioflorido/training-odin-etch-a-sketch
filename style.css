@@ -17,6 +17,7 @@ button.updateGridCountButton {
 }
 
 div.container {
+  border: 1px solid black;
   display: flex;
   flex-direction: row;
 }
@@ -27,10 +28,5 @@ div.subcontainer {
 }
 
 div.square {
-  border: 1px solid black;
   aspect-ratio: 1 / 1; /* keeps them square */
-}
-
-div.square:hover {
-  background-color: bisque;
 }

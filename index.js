@@ -1,6 +1,7 @@
 const DEFAULT_GRID_COUNT = 16;
 
 function createGrid(gridCount = DEFAULT_GRID_COUNT) {
+  console.log(`Creating ${gridCount} x ${gridCount} grid.`);
   const rowSize = gridCount;
   const columnSize = gridCount;
 
@@ -16,9 +17,6 @@ function createGrid(gridCount = DEFAULT_GRID_COUNT) {
     for (let currentColumn = 0; currentColumn < columnSize; currentColumn++) {
       const squareDiv = document.createElement("div");
       squareDiv.classList.add("square");
-      //   const samplep = document.createElement("p");
-      //   samplep.textContent = `Row ${currentRow} : Column : ${currentColumn}`;
-      //   squareDiv.appendChild(samplep);
       subcontainer.appendChild(squareDiv);
     }
 
@@ -52,4 +50,18 @@ updateGridCountButton.addEventListener("click", () => {
   }
 
   createGrid((gridCount = gridCount));
+});
+
+// Hover Animation stuff
+
+const squares = document.querySelectorAll("div.square");
+
+squares.forEach((square) => {
+  square.addEventListener("mouseover", () => {
+    square.style.backgroundColor = "black";
+  });
+
+  square.addEventListener("mouseout", () => {
+    square.style.backgroundColor = "white";
+  });
 });
