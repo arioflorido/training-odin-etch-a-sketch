@@ -15,10 +15,10 @@ function createGrid(gridCount = DEFAULT_GRID_COUNT) {
 
     for (let currentColumn = 0; currentColumn < columnSize; currentColumn++) {
       const squareDiv = document.createElement("div");
-      const samplep = document.createElement("p");
-      samplep.textContent = `Row ${currentRow} : Column : ${currentColumn}`;
-      squareDiv.appendChild(samplep);
       squareDiv.classList.add("square");
+      //   const samplep = document.createElement("p");
+      //   samplep.textContent = `Row ${currentRow} : Column : ${currentColumn}`;
+      //   squareDiv.appendChild(samplep);
       subcontainer.appendChild(squareDiv);
     }
 
