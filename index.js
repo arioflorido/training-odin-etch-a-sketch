@@ -1,3 +1,52 @@
+// Hover Animation stuff
+
+function applyColorOnHover() {
+  class FadingColor {
+    /**
+     * Create a fading color generator that lowers opacity on each call.
+     * @param {number} startOpacity - Starting opacity (0 to 1), default 1.
+     * @param {number} step - Amount to decrease opacity each call, default 0.1.
+     */
+    constructor(startOpacity = 1, step = 0.1) {
+      this.startOpacity = startOpacity;
+      this.step = step;
+      this.opacity = startOpacity;
+    }
+
+    /**
+     * Generate the next color with decreasing opacity.
+     * Resets to startOpacity when opacity reaches 0 or below.
+     * @returns {string} HSLA color string.
+     */
+    next() {
+      this.opacity -= this.step;
+      if (this.opacity <= 0) {
+        this.opacity = this.startOpacity;
+      }
+      const hue = Math.random() * 360;
+      const saturation = 100;
+      const lightness = 50;
+      return `hsla(${hue}, ${saturation}%, ${lightness}%, ${this.opacity.toFixed(
+        2
+      )})`;
+    }
+  }
+
+  const fadingColor = new FadingColor();
+  const squares = document.querySelectorAll("div.square");
+
+  squares.forEach((square) => {
+    square.addEventListener("mouseover", () => {
+      square.style.backgroundColor = fadingColor.next();
+    });
+
+    square.addEventListener("mouseout", () => {
+      square.style.backgroundColor = "white";
+    });
+  });
+}
+
+// GRID STUFF
 const DEFAULT_GRID_COUNT = 16;
 
 function createGrid(gridCount = DEFAULT_GRID_COUNT) {
@@ -22,6 +71,8 @@ function createGrid(gridCount = DEFAULT_GRID_COUNT) {
 
     container.appendChild(subcontainer);
   }
+
+  applyColorOnHover();
 }
 
 createGrid();
@@ -50,18 +101,4 @@ updateGridCountButton.addEventListener("click", () => {
   }
 
   createGrid((gridCount = gridCount));
-});
-
-// Hover Animation stuff
-
-const squares = document.querySelectorAll("div.square");
-
-squares.forEach((square) => {
-  square.addEventListener("mouseover", () => {
-    square.style.backgroundColor = "black";
-  });
-
-  square.addEventListener("mouseout", () => {
-    square.style.backgroundColor = "white";
-  });
 });
